@@ -3,7 +3,7 @@ import copy, random, re
 class DeckParser:
 
 	def __init__(self, infile):
-		self.regexpr = "x (.*?) \("
+		self.regexpr = " (.*?) \("
 		self.infile = infile
 		self.deck = self.parse_input()
 		self.full_deck = copy.deepcopy(self.deck)
