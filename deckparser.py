@@ -28,7 +28,12 @@ class DeckParser:
 		return self.draw(num_cards=5)
 
 	def draw(self, num_cards=1):
-		return [self.deck.pop() for i in range(num_cards)]
+		remaining = len(self.deck)
+		if num_cards > remaining:
+			print("Cannot draw {} cards - only {} left in deck.".format(num_cards, remaining))
+			return []
+		else:
+			return [self.deck.pop() for i in range(num_cards)]
 
 	def reset_deck(self):
 		self.deck = copy.deepcopy(self.full_deck)

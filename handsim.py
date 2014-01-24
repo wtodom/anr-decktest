@@ -18,21 +18,30 @@ def main_menu(deck):
 		for card in deck.sample_hand():
 			print(card)
 	elif choice == "2":
-		print(deck.draw())
+		print(deck.draw()[0])
 	elif choice == "3":
-		print("How many cards?")
-		num = input(">> ")
+		num = get_num_cards()
 		for card in deck.draw(num_cards=num):
 			print(card)
 	elif choice == "4":
 		deck.shuffle()
 	elif choice == "5":
-		deck.reset()
+		deck.reset_deck()
 	elif choice == "6":
 		print("Bye!")
 		sys.exit()
 	else:
 		print("Invalid selection. Please choose one of the above options.")
+
+def get_num_cards():
+	print("How many cards?")
+	num = input(">> ")
+	try:
+		num = int(num)
+	except:
+		print("Invalid input - must enter an integer.")
+		get_num_cards()
+	return int(num)
 
 def main():
 	if len(sys.argv) != 2:
