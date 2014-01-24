@@ -2,15 +2,16 @@ import re
 
 class DeckParser:
 
-	def __init__(self, text):
+	def __init__(self, infile):
 		self.regexpr = "x (.*?) \("
-		self.plaintext = text
-		self.full_deck = self.parse_input()
-		self.deck = self.full_deck
+		self.infile = infile
+		self.deck = self.parse_input()
 
 	def parse_input(self):
+		with open(self.infile, "r") as f:
+			lines = f.readlines()
 		cards = []
-		for line in self.plaintext:
+		for line in lines:
 			if line[0].isdigit():
 				for i in range(int(line[0])):  # between 1 and 3, inclusive
 					card = re.findall(self.regexpr, line)
