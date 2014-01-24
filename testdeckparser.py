@@ -27,6 +27,14 @@ class TestDeckParser(unittest.TestCase):
 
 		self.assertEqual(len(hand), 5)
 
+	def test_repeated_sample_hands(self):
+		deck_parser = DeckParser("sample_input.txt")
+		deck_length = len(deck_parser.deck)
+		for i in range(10):
+			deck_parser.sample_hand()
+			# if this passes ten times then the cards are being replaced.
+			self.assertEqual(len(deck_parser.deck), deck_length - 5)
+
 	def test_deck_reset(self):
 		deck_parser = DeckParser("sample_input.txt")
 		deck_length = len(deck_parser.full_deck)
