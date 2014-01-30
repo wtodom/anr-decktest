@@ -1,6 +1,12 @@
-import sys
+from __future__ import print_function
 from deckparser import *
 
+import sys
+
+
+v = sys.version_info
+if v < (3, 0):
+	input = raw_input
 
 def main_menu(deck):
 	print()
