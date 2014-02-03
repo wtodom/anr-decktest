@@ -26,14 +26,18 @@ def main_menu(deck):
 		for card in deck.sample_hand():
 			print(card)
 	elif choice == "2":
-		print("You drew:")
-		print(deck.draw()[0])
+		card = deck.draw()
+		if card:
+			print("You drew:")
+			print(card[0])  # there is only one card in the list
 	elif choice == "3":
 		num = get_num_cards()
 		print()
-		print("You drew:")
-		for card in deck.draw(num_cards=num):
-			print(card)
+		cards = deck.draw(num_cards=num)
+		if cards:
+			print("You drew:")
+			for card in cards:
+				print(card)
 	elif choice == "4":
 		deck.shuffle()
 		print("Your deck has been shuffled.")
