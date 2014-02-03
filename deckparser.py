@@ -8,6 +8,7 @@ class DeckParser:
 	def __init__(self, infile):
 		self.regexpr = " (.*?) \("
 		self.infile = infile
+		self.hand_size = 5
 		self.deck = self.parse_input()
 		self.full_deck = copy.deepcopy(self.deck)
 		self.deck_size = len(self.full_deck)
@@ -17,6 +18,8 @@ class DeckParser:
 			lines = f.readlines()
 		cards = []
 		for line in lines:
+			if "andromeda" in line.lower():
+				self.hand_size = 9
 			if line[0].isdigit():
 				for i in range(int(line[0])):  # between 1 and 3, inclusive
 					card = re.findall(self.regexpr, line)
@@ -27,8 +30,8 @@ class DeckParser:
 	def sample_hand(self):
 		if len(self.deck) != self.deck_size:
 			self.reset_deck()
-		random.shuffle(self.deck)
-		return self.draw(num_cards=5)
+		self.shuffle()
+		return self.draw(num_cards=self.hand_size)
 
 	def draw(self, num_cards=1):
 		remaining = len(self.deck)
