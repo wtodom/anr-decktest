@@ -19,20 +19,27 @@ def main_menu(deck):
 	print()
 
 	choice = input(">> ")
+	print()
 
 	if choice == "1":
+		print("Sample hand:")
 		for card in deck.sample_hand():
 			print(card)
 	elif choice == "2":
+		print("You drew:")
 		print(deck.draw()[0])
 	elif choice == "3":
 		num = get_num_cards()
+		print()
+		print("You drew:")
 		for card in deck.draw(num_cards=num):
 			print(card)
 	elif choice == "4":
 		deck.shuffle()
+		print("Your deck has been shuffled.")
 	elif choice == "5":
 		deck.reset_deck()
+		print("Your deck has been reset.")
 	elif choice == "6":
 		print("Bye!")
 		sys.exit()
