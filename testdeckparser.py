@@ -50,5 +50,16 @@ class TestDeckParser(unittest.TestCase):
 		for card in cards:
 			self.assertTrue(card in set(deck_parser.full_deck))
 
+	def test_full_deck(self):
+		deck_parser = DeckParser("netrunnerdb_sample.txt")
+		full_deck = deck_parser.full_deck
+		num_cards = len(set(full_deck))
+		card_list = deck_parser.cards_with_count()
+		self.assertEqual(num_cards, len(card_list))
+		for card in card_list:
+			card_name = card[3::]
+			card_count = int(card[0])
+			self.assertTrue(full_deck.count(card_name) == card_count)
+
 if __name__ == '__main__':
 	unittest.main()

@@ -49,3 +49,10 @@ class DeckParser:
 
 	def unique_cards(self):
 		return set(self.full_deck)
+
+	def cards_with_count(self):
+		card_list = []
+		for card in self.unique_cards():
+			card_count = self.full_deck.count(card)
+			card_list.append(str(card_count) + "x " + card)
+		return card_list
