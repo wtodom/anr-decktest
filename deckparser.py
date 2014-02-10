@@ -46,3 +46,6 @@ class DeckParser:
 
 	def shuffle(self):
 		random.shuffle(self.deck)
+
+	def unique_cards(self):
+		return set(self.full_deck)

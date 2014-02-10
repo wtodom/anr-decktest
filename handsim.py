@@ -15,7 +15,8 @@ def main_menu(deck):
 	print("3) Draw multiple cards")
 	print("4) Shuffle deck")
 	print("5) Reset deck")
-	print("6) Exit")
+	print("6) Show unique cards")
+	print("7) Exit")
 	print()
 
 	choice = input(">> ")
@@ -45,6 +46,10 @@ def main_menu(deck):
 		deck.reset_deck()
 		print("Your deck has been reset.")
 	elif choice == "6":
+		cards = deck.unique_cards()
+		for card in cards:
+			print(card)
+	elif choice == "7":
 		print("Bye!")
 		sys.exit()
 	else:
